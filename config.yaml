@@ -1,0 +1,55 @@
+#重构网络参数
+rebuild :
+  epochs : 250
+  warmup_epochs : 10
+  patience : 20
+  default_lr : 0.00005
+  weight_decay : 0.0002
+  max_drop_prob : 0.2
+  alpha : 0.5
+  beta : 0.6
+  device_str : "cuda:0"
+  sample_ratio : 1
+  task :
+    RTR : 1
+    STR : 1
+  kinematic : 1
+  dwa : 1
+  test_model_path : None
+#预测网络参数
+pred :
+  epochs : 300
+  warmup_epochs : 10
+  patience : 25
+  default_lr : 0.00005
+  weight_decay : 0.0002
+  max_drop_prob : 0.2
+  device_str : "cuda:0"
+  sample_ratio : 1
+  task :
+    RTR : 1
+    STR : 1
+  pretrained_model_path : "./log/rebuild/11/2025-12-29-10_04_18/checkpoint/checkpoint_353_0.001767_0.001594_.pth"
+  test_model_path : None
+#公共参数
+common :
+  data_dir : "../highD/"
+  log_dir : "./log"
+  sampling_frequency : 25
+  downsampling_rate : 5
+  his_horizon : 3
+  fut_horizon : 5
+  lanepoint_num : 20
+  lanepoint_interval : 10
+  B : 128
+  N : 11
+  Th : &Th 15
+  Tf : 25
+  T : 40
+  D : 10
+  Lmax : *Th
+  De : 256
+  head_num : 8
+  stnet_depth : 3
+  aggnet_depth : 1
+  socialnet_depth : 2
